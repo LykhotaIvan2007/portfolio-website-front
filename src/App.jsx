@@ -1,28 +1,17 @@
-import {useEffect, useState} from "react";
-
+import Self from "./pages/Self/Self.jsx"
+import Documentation from './pages/Documentation/Documentation.jsx'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 function App() {
 
-  const [data, setData] = useState("");
-
-  const retrieveData = async () => {
-    const response = await fetch("http://localhost:8000/api/test/")
-    if (!response.ok)
-    {
-      throw new Error(`${response.status}`)
-    }
-
-    const result = await response.json()
-
-    console.log(result)
-  }
-
-  useEffect(() => {
-    retrieveData()
-  }, []);
 
   return (
-      <div>Ванька люимий перожочек ригачек</div>
+      <Router>
+          <Routes>
+              <Route path='/' element={<Self/>} />
+              <Route path='/documentation' element={<Documentation/>} />
+          </Routes>
+      </Router>
   )
 }
 

@@ -1,0 +1,178 @@
+@use "../../../styles/variables" as *;
+.documentCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid $border;
+  border-radius: 18px;
+}
+
+.fileIcon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba($accent, 0.14);
+  color: $accent;
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.documentInfo {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+
+  h5 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+.documentTag {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border: 1px solid #513268;
+  border-radius: 999px;
+  color: $muted;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .centralSection {
+    grid-template-columns: 1fr;
+  }
+
+  .headerText {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainDiv {
+    padding: 24px 16px 48px;
+  }
+
+  .documentationSection {
+    padding-top: 36px;
+  }
+
+  .yearPannel {
+    padding: 24px 20px;
+  }
+
+  .yearContent {
+    margin: 0 20px;
+    padding: 20px 0 24px;
+  }
+
+  .resultDiv {
+    padding: 24px 18px;
+  }
+
+  .documentCard {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .documentInfo {
+    flex-basis: calc(100% - 68px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yearCard,
+  .periodButton,
+  .arrow::before {
+    transition: none;
+  }
+}
+
+.subjectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+
+
+
+
+
+.fileIcon {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fileIcon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.downloadButton {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #513268;
+  border-radius: 999px;
+  background: transparent;
+  color: #b5a7c8;
+  font-size: 13px;
+  text-decoration: none;
+  transition:
+          color 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    border-color: #b026ff;
+    background: rgba(176, 38, 255, 0.12);
+    color: #f5efff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #df9eff;
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .downloadButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .downloadButton {
+    transition: none;
+  }
+}

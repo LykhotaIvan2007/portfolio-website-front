@@ -1,0 +1,86 @@
+$background: #0d081a;
+$surface: #1b122d;
+$surface-active: #2a1b40;
+$border: #39234f;
+$accent: #b026ff;
+$text: #f5efff;
+$muted: #b5a7c8;
+
+.mainDiv {
+  min-height: 100vh;
+  padding: 48px 32px 80px;
+  background: $background;
+  color: $text;
+  font-family: inherit;
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  button {
+    font-family: inherit;
+  }
+}
+
+.pageContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.documentationSection {
+  padding-top: 56px;
+}
+
+.headerText {
+  margin-bottom: 56px;
+
+  p {
+    margin: 0 0 16px;
+    color: #d883ff;
+    font-family: monospace;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(32px, 4vw, 60px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+    overflow-wrap: anywhere;
+  }
+}
+
+.centralSection {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 2fr);
+  align-items: start;
+  gap: 28px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

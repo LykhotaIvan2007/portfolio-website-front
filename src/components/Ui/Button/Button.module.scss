@@ -1,0 +1,27 @@
+.button {
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary {
+  background: #b026ff;
+  color: #0d081a;
+
+  &:hover {
+    background: #d580ff;
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: #f7f2ff;
+  border-color: #493064;
+
+  &:hover {
+    background: rgba(176, 38, 255, 0.14);
+    border-color: #b026ff;
+  }
+}

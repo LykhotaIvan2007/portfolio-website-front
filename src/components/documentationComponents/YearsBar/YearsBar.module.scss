@@ -1,0 +1,136 @@
+@use "../../../styles/variables" as *;
+
+.yearsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.yearCard {
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 28px;
+  background: $surface;
+  transition:
+          border-color 180ms ease,
+          background-color 180ms ease;
+}
+
+.yearCardOpen {
+  border-color: $accent;
+  background: $surface-active;
+
+  .arrow {
+    border-color: $accent;
+    background: $accent;
+    color: $background;
+
+    &::before {
+      transform: translateY(2px) rotate(225deg);
+    }
+  }
+}
+
+.yearHeading {
+  margin: 0;
+  font-weight: inherit;
+}
+
+.yearPannel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 30px;
+  border: 0;
+  background: transparent;
+  color: $text;
+  text-align: left;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid #df9eff;
+    outline-offset: -6px;
+    border-radius: 28px;
+  }
+}
+
+.yearInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.yearTitle {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.yearDates {
+  color: $muted;
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.arrow {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #513268;
+  border-radius: 50%;
+  color: $text;
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 180ms ease;
+  }
+}
+
+.yearContent {
+  margin: 0 30px;
+  padding: 26px 0 30px;
+  border-top: 1px solid $border;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.chooseLabel {
+  margin: 0 0 16px;
+  color: $muted;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.periodsRow,
+.semestersRow {
+  display: grid;
+  gap: 10px;
+}
+
+.periodsRow {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.semestersRow {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+
+

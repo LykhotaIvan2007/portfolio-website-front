@@ -1,0 +1,44 @@
+@use "../../../styles/variables" as *;
+.subjectSection {
+  min-width: 0;
+
+  & + & {
+    padding-top: 28px;
+    border-top: 1px solid $border;
+  }
+}
+.subjectHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  h4 {
+    margin: 0;
+    color: $text;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+}
+
+.documentCount {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba($accent, 0.12);
+  color: #d883ff;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.documentsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
