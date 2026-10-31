@@ -196,16 +196,30 @@ button {
     position: absolute;
     inset: 0 auto 0 50%;
     transform: translateX(-50%);
-    width: calc(var(--container) + 1px);
+
+    width: 100%;
+    max-width: calc(var(--container) + 1px);
+
     pointer-events: none;
     z-index: 0;
+
     background-image: linear-gradient(
             to right,
             var(--border-subtle) 1px,
             transparent 1px
     );
+
     background-size: 400px 100%;
     opacity: 0.6;
+}
+
+/* На мобильном оставляем линии по краям контента */
+@media (max-width: 767px) {
+    .guides {
+        width: calc(100% - var(--gutter) * 2);
+        background: none;
+        border-inline: 1px solid var(--border-subtle);
+    }
 }
 
 .container {
