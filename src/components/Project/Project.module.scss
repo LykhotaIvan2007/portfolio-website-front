@@ -70,3 +70,221 @@
   font-size: 11px;
   color: var(--text-secondary);
 }
+
+
+.projectItem {
+  min-width: 0;
+}
+
+/* До попадания на экран */
+.pending {
+  .projectCard {
+    opacity: 0;
+  }
+}
+
+/* После первого появления */
+.visible {
+  .projectCard {
+    opacity: 1;
+    animation: projectCardEnter 850ms
+    cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .image {
+    animation: projectImageEnter 1000ms
+    cubic-bezier(0.22, 1, 0.36, 1) 120ms backwards;
+  }
+
+  .h3 {
+    animation: projectContentEnter 700ms
+    cubic-bezier(0.22, 1, 0.36, 1) 220ms backwards;
+  }
+
+  .projectCard__desc {
+    animation: projectContentEnter 700ms
+    cubic-bezier(0.22, 1, 0.36, 1) 340ms backwards;
+  }
+
+  .tag {
+    animation: projectTagEnter 550ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    var(--tag-delay, 450ms) backwards;
+  }
+}
+
+/* Карточка поднимается на своё место */
+@keyframes projectCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Фото проявляется и слегка увеличивается */
+@keyframes projectImageEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Заголовок и описание появляются справа */
+@keyframes projectContentEnter {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Теги появляются по очереди */
+@keyframes projectTagEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pending .projectCard {
+    opacity: 1;
+  }
+
+  .visible {
+    .projectCard,
+    .image,
+    .h3,
+    .projectCard__desc,
+    .tag {
+      animation: none;
+    }
+  }
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .projectCard {
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  .projectCard__body {
+    gap: 16px;
+  }
+
+  .h3 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .projectCard__desc {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+/* Телефоны */
+@media (max-width: 767px) {
+  .projectItem {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .projectCard {
+    box-sizing: border-box;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .image {
+    width: 55%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    justify-self: center;
+    border-radius: 16px;
+  }
+
+  .projectCard__body {
+    width: 60%;
+    min-width: 0;
+    gap: 16px;
+  }
+
+  .h3 {
+    max-width: 100%;
+    font-size: clamp(24px, 6vw, 30px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .projectCard__desc {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+
+  .tags {
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .tag {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 8px 12px;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 360px) {
+  .projectCard {
+    padding: 16px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+
+  .image {
+    border-radius: 12px;
+  }
+
+  .projectCard__desc {
+    font-size: 14px;
+  }
+}

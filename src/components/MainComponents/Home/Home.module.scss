@@ -220,3 +220,289 @@
     transform: translateY(12px);
   }
 }
+
+
+/*Анимации*/
+
+/* Заголовок плавно выезжает снизу */
+.title {
+  animation: textEnter 1500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Имя загорается фиолетовым после появления заголовка */
+.accent {
+  animation: nameLightUp 1400ms ease-out 650ms both;
+}
+
+/* Описание появляется чуть позже */
+.lead {
+  animation: textEnter 900ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+/* Затем появляется кнопка */
+.actions {
+  animation: textEnter 900ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both;
+}
+
+/* Изолируем слои фотографии, рамки и свечения */
+.portrait {
+  isolation: isolate;
+}
+
+/* Свечение за фотографией */
+.portraitGlow {
+  z-index: 0;
+  animation: glowEnter 1600ms ease-out 500ms both;
+}
+
+/* Рамка выезжает из-под фотографии вправо и вниз */
+.portraitFrame {
+  z-index: 1;
+  animation: frameSlideOut 1200ms cubic-bezier(0.22, 1, 0.36, 1) 450ms both;
+}
+
+/* Фотография закрывает рамку в начале анимации */
+.portraitPhoto {
+  z-index: 2;
+}
+
+.portraitPhoto {
+  animation: photoAppear 1600ms ease-out both;
+}
+
+@keyframes photoAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+/* Появление текста */
+@keyframes textEnter {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Включение фиолетового цвета и мягкая вспышка */
+@keyframes nameLightUp {
+  0% {
+    color: var(--text-primary, #f5efff);
+    text-shadow: none;
+  }
+
+  55% {
+    color: var(--accent-default, #b026ff);
+    text-shadow:
+            0 0 12px rgba(176, 38, 255, 0.7),
+            0 0 36px rgba(176, 38, 255, 0.4);
+  }
+
+  100% {
+    color: var(--accent-default, #b026ff);
+    text-shadow:
+            0 0 18px rgba(176, 38, 255, 0.2);
+  }
+}
+
+/* Начальная позиция совпадает с фотографией */
+@keyframes frameSlideOut {
+  from {
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  to {
+    left: 8.33%;
+    top: 6.67%;
+    opacity: 1;
+  }
+}
+
+/* Постепенное появление фонового свечения */
+@keyframes glowEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* Учитываем настройку уменьшения движения */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .accent,
+  .lead,
+  .actions,
+  .portraitPhoto,
+  .portraitFrame,
+  .portraitGlow {
+    animation: none;
+  }
+}
+
+/* Планшеты и небольшие ноутбуки */
+@media (max-width: 1100px) {
+  .container {
+    box-sizing: border-box;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 32px;
+  }
+
+  .heroIntro {
+    min-width: 0;
+  }
+
+  .title {
+    font-size: clamp(42px, 5.5vw, 64px);
+  }
+
+  .portrait {
+    width: 100%;
+    max-width: 380px;
+    margin: 0;
+    justify-self: center;
+  }
+
+  .portraitFrame,
+  .portraitPhoto {
+    box-sizing: border-box;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  .actions {
+    max-width: 100%;
+  }
+
+  .actions > a,
+  .actions > button {
+    box-sizing: border-box;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Телефоны и вертикальные планшеты */
+@media (max-width: 767px) {
+  .landing {
+    padding-block: 28px 48px;
+  }
+
+  .container {
+    padding-inline: 24px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  /* Фотография становится первой */
+  .portrait {
+    grid-row: 1;
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+    aspect-ratio: 480 / 600;
+  }
+
+  .portraitPhoto,
+  .portraitFrame {
+    height: 80%;
+    border-radius: 24px;
+  }
+
+  .portraitGlow {
+    filter: blur(60px);
+  }
+
+  .heroIntro {
+    width: 100%;
+    gap: 24px;
+  }
+
+  .title {
+    margin: 0;
+    max-width: 100%;
+
+    font-size: clamp(40px, 12vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .lead {
+    margin: 0;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .actions {
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .actions > a,
+  .actions > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 52px;
+    padding: 14px 20px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 360px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .hero {
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .actions > a,
+  .actions > button {
+    width: 100%;
+    padding-inline: 14px;
+    font-size: 13px;
+  }
+}

@@ -51,12 +51,12 @@ const Header = ()=> {
                 <ul className={styles.navLinks} id="nav-links">
                     {links.map((link)=>{
                         return(
-                            <li>
+                            <li key={link.label}>
                                 <a
                                     onClick={()=>setActive(link.href)}
                                     className={`${styles.navLink} ${active === link.href ? styles.active : ''}`}
                                     href={link.href}
-                                    aria-current="true"
+                                    aria-current={active === link.href ? 'location' : undefined}
                                 >
                                     {link.label}
                                 </a>
@@ -65,7 +65,11 @@ const Header = ()=> {
                     })}
                 </ul>
 
-                <Button variant="secondary" atag={"#contact"}>Get in touch</Button>
+                <div className={styles.contactButton}>
+                    <Button variant="secondary" atag="#contact">
+                        Get in touch
+                    </Button>
+                </div>
             </nav>
         </header>
     )

@@ -1,8 +1,8 @@
-import styles from "./YearsBar.module.scss";
-import PeriodButton from "../PeriodButton/PeriodButton.jsx";
-import SemesterButton from "../SemesterButton/SemesterButton.jsx";
+import styles from './YearsBar.module.scss';
+import PeriodButton from '../PeriodButton/PeriodButton.jsx';
+import SemesterButton from '../SemesterButton/SemesterButton.jsx';
 
-const YearsBar = (props)=> {
+const YearsBar = (props) => {
     const {
         years,
         setClicked,
@@ -12,83 +12,93 @@ const YearsBar = (props)=> {
         setSelected,
         semesters,
         open,
-    } = props
-    return(
+        mobileDocuments,
+    } = props;
+
+    return (
         <div className={styles.yearsList}>
             {years.map((year) => (
-                <div
-                    key={year.id}
-                    className={`${styles.yearCard} ${
-                        open === year.id
-                            ? styles.yearCardOpen
-                            : ""
-                    }`}
-                >
-                    <h3 className={styles.yearHeading}>
-                        <button
-                            type="button"
-                            className={styles.yearPannel}
-                            aria-expanded={open === year.id}
-                            aria-controls={`year-${year.id}-content`}
-                            onClick={() =>
-                                open !== year.id
-                                    ? setClicked(year.id)
-                                    : setOpen(0)
-                            }
-                        >
-                                            <span className={styles.yearInfo}>
-                                                <span className={styles.yearTitle}>
-                                                    Year {year.id}
-                                                </span>
-
-                                                <span className={styles.yearDates}>
-                                                    {year.date}
-                                                </span>
-                                            </span>
-
-                            <span
-                                className={styles.arrow}
-                                aria-hidden="true"
-                            />
-                        </button>
-                    </h3>
-
+                <div className={styles.yearGroup} key={year.id}>
                     <div
-                        id={`year-${year.id}-content`}
-                        className={styles.yearContent}
-                        hidden={open !== year.id}
+                        className={`${styles.yearCard} ${
+                            open === year.id ? styles.yearCardOpen : ''
+                        }`}
                     >
-                        <p className={styles.chooseLabel}>
-                            Choose period or semester
-                        </p>
+                        <h3 className={styles.yearHeading}>
+                            <button
+                                type="button"
+                                className={styles.yearPannel}
+                                aria-expanded={open === year.id}
+                                aria-controls={`year-${year.id}-content`}
+                                onClick={() =>
+                                    open !== year.id
+                                        ? setClicked(year.id)
+                                        : setOpen(0)
+                                }
+                            >
+                                <span className={styles.yearInfo}>
+                                    <span className={styles.yearTitle}>
+                                        Year {year.id}
+                                    </span>
 
-                        <div className={styles.periodsRow}>
-                            {periods.map((period, index) => (
-                                <PeriodButton
-                                    period={period}
-                                    selected={selected}
-                                    year={year}
-                                    setSelected={setSelected}
-                                    index={index}
-                                />
-                            ))}
-                        </div>
+                                    <span className={styles.yearDates}>
+                                        {year.date}
+                                    </span>
+                                </span>
 
-                        <div className={styles.semestersRow}>
-                            {semesters.map((semester, index) => (
-                                <SemesterButton
-                                    semester={semester}
-                                    selected={selected}
-                                    year={year}
-                                    setSelected={setSelected}
-                                    index={index}
+                                <span
+                                    className={styles.arrow}
+                                    aria-hidden="true"
                                 />
-                            ))}
+                            </button>
+                        </h3>
+
+                        <div
+                            id={`year-${year.id}-content`}
+                            className={styles.yearContent}
+                            hidden={open !== year.id}
+                        >
+                            <p className={styles.chooseLabel}>
+                                Choose period or semester
+                            </p>
+
+                            <div className={styles.periodsRow}>
+                                {periods.map((period, index) => (
+                                    <PeriodButton
+                                        key={index}
+                                        period={period}
+                                        selected={selected}
+                                        year={year}
+                                        setSelected={setSelected}
+                                        index={index}
+                                    />
+                                ))}
+                            </div>
+
+                            <div className={styles.semestersRow}>
+                                {semesters.map((semester, index) => (
+                                    <SemesterButton
+                                        key={index}
+                                        semester={semester}
+                                        selected={selected}
+                                        year={year}
+                                        setSelected={setSelected}
+                                        index={index}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
+
+                    {open === year.id && selected.year === year.id && (
+                        <div className={styles.mobileDocuments}>
+                            {mobileDocuments}
+                        </div>
+                    )}
                 </div>
             ))}
         </div>
-    )
-}
+    );
+};
+
 export default YearsBar;

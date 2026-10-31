@@ -42,3 +42,27 @@
   gap: 14px;
 }
 
+
+@media (max-width: 900px) {
+  .subjectSection + .subjectSection {
+    padding-top: 24px;
+  }
+
+  .subjectHeader {
+    gap: 8px;
+    margin-bottom: 14px;
+
+    h4 {
+      font-size: 18px;
+    }
+  }
+
+  .documentCount {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .documentsDiv {
+    gap: 12px;
+  }
+}

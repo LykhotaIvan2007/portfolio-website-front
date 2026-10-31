@@ -132,5 +132,94 @@
   margin-top: 12px;
 }
 
+.yearGroup {
+  min-width: 0;
+}
+
+.mobileDocuments {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .yearsList {
+    gap: 14px;
+  }
+
+  .yearGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mobileDocuments {
+    display: block;
+    min-width: 0;
+  }
+
+  .yearCard {
+    border-radius: 24px;
+  }
+
+  .yearPannel {
+    min-height: 100px;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .yearInfo {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .yearTitle {
+    font-size: 24px;
+  }
+
+  .yearDates {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .yearContent {
+    margin-inline: 20px;
+    padding: 18px 0 24px;
+  }
+
+  .chooseLabel {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .periodsRow,
+  .semestersRow {
+    gap: 8px;
+  }
+
+  .periodsRow > button,
+  .semestersRow > button {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding-inline: 6px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .yearPannel {
+    padding-inline: 16px;
+  }
+
+  .yearContent {
+    margin-inline: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yearCard,
+  .arrow::before {
+    transition: none;
+  }
+}
 
 

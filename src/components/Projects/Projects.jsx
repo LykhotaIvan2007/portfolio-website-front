@@ -9,7 +9,7 @@ const Projects = () => {
     const retreiveData = async ()=>{
 
         try{
-            const response = await fetch('http://localhost:8000/api/getprojects/')
+            const response = await fetch('api/getprojects/')
 
             if (!response.ok) {
                 throw new Error("Upload failed");
@@ -49,7 +49,7 @@ const Projects = () => {
                         </h2>
                     </div>
 
-                    <p className={styles.sectionHeader}>
+                    <p className={styles.sectionHeader__text}>
                         A few things I have researched, designed and built.
                     </p>
                 </header>
@@ -59,6 +59,7 @@ const Projects = () => {
                     {projects.map((project) => {
                         return (
                             <Project
+                                key={project.id}
                                 project_id={project.id}
                                 image={project.image}
                                 title={project.title}

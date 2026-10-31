@@ -1,4 +1,5 @@
 @use "../../../styles/variables" as *;
+
 .documentCard {
   display: flex;
   align-items: center;
@@ -45,90 +46,6 @@
   }
 }
 
-.documentTag {
-  flex-shrink: 0;
-  padding: 6px 14px;
-  border: 1px solid #513268;
-  border-radius: 999px;
-  color: $muted;
-  font-family: monospace;
-  font-size: 12px;
-}
-
-@media (max-width: 900px) {
-  .centralSection {
-    grid-template-columns: 1fr;
-  }
-
-  .headerText {
-    margin-bottom: 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mainDiv {
-    padding: 24px 16px 48px;
-  }
-
-  .documentationSection {
-    padding-top: 36px;
-  }
-
-  .yearPannel {
-    padding: 24px 20px;
-  }
-
-  .yearContent {
-    margin: 0 20px;
-    padding: 20px 0 24px;
-  }
-
-  .resultDiv {
-    padding: 24px 18px;
-  }
-
-  .documentCard {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 16px;
-  }
-
-  .documentInfo {
-    flex-basis: calc(100% - 68px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .yearCard,
-  .periodButton,
-  .arrow::before {
-    transition: none;
-  }
-}
-
-.subjectsList {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-
-
-
-
-
-
-.fileIcon {
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.fileIcon svg {
-  width: 25px;
-  height: 25px;
-}
-
 .downloadButton {
   display: inline-flex;
   flex-shrink: 0;
@@ -137,12 +54,14 @@
   gap: 8px;
   min-height: 44px;
   padding: 10px 16px;
+
   border: 1px solid #513268;
   border-radius: 999px;
   background: transparent;
-  color: #b5a7c8;
+  color: $muted;
   font-size: 13px;
   text-decoration: none;
+
   transition:
           color 180ms ease,
           background-color 180ms ease,
@@ -154,9 +73,9 @@
   }
 
   &:hover {
-    border-color: #b026ff;
-    background: rgba(176, 38, 255, 0.12);
-    color: #f5efff;
+    border-color: $accent;
+    background: rgba($accent, 0.12);
+    color: $text;
   }
 
   &:focus-visible {
@@ -165,9 +84,70 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Компактная кнопка в более узкой колонке */
+@media (max-width: 1100px) {
+  .documentCard {
+    gap: 12px;
+    padding: 16px;
+  }
+
   .downloadButton {
-    width: 100%;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .documentCard {
+    gap: 12px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .fileIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+
+    svg {
+      width: 23px;
+      height: 23px;
+    }
+  }
+
+  .documentInfo {
+    h5 {
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .documentCard {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .fileIcon {
+    width: 36px;
+    height: 40px;
+
+    svg {
+      width: 21px;
+      height: 21px;
+    }
   }
 }
 

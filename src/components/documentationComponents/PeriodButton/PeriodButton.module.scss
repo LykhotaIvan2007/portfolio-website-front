@@ -37,3 +37,9 @@
     color: $background;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .periodButton {
+    transition: none;
+  }
+}

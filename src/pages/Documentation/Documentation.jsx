@@ -41,7 +41,7 @@ const Documentation = () => {
         const retrieveData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/api/getdocs/",
+                    "api/getdocs/",
                     { signal: controller.signal }
                 );
 
@@ -158,12 +158,11 @@ const Documentation = () => {
 
                 <section className={styles.documentationSection}>
                     <div className={styles.headerText}>
-                        <p>02 / Study archive</p>
+                        <p>Study archive</p>
                         <h2>University documentation</h2>
                     </div>
 
                     <div className={styles.centralSection}>
-                        {/**/}
                         <YearsBar
                             years={years}
                             setClicked={setClicked}
@@ -173,16 +172,24 @@ const Documentation = () => {
                             setSelected={setSelected}
                             semesters={semesters}
                             open={open}
+                            mobileDocuments={
+                                <DocumentsBar
+                                    selected={selected}
+                                    loading={loading}
+                                    error={error}
+                                    visibleSubjects={visibleSubjects}
+                                />
+                            }
                         />
 
-
-                        {/**/}
-                        <DocumentsBar
-                            selected={selected}
-                            loading={loading}
-                            error={error}
-                            visibleSubjects={visibleSubjects}
-                        />
+                        <div className={styles.desktopDocuments}>
+                            <DocumentsBar
+                                selected={selected}
+                                loading={loading}
+                                error={error}
+                                visibleSubjects={visibleSubjects}
+                            />
+                        </div>
                     </div>
                 </section>
             </div>

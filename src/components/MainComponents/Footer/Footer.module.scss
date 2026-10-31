@@ -151,3 +151,143 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Почта остаётся фиолетовой после анимации */
+.email {
+  color: var(--accent-text, #b026ff);
+  text-decoration-color: currentColor;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* icon — глобальный класс, поэтому используем :global */
+.email :global(.icon) {
+  color: inherit;
+}
+
+/* До появления футера */
+.pending .container {
+  opacity: 0;
+}
+
+/* Поднимаем содержимое, наблюдая за неподвижным footer */
+.visible {
+  .container {
+    opacity: 1;
+    animation: footerSlideUp 1000ms
+    cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .intro {
+    animation: footerTextEnter 800ms
+    cubic-bezier(0.22, 1, 0.36, 1) 150ms backwards;
+  }
+
+  .heading {
+    animation: footerTextEnter 900ms
+    cubic-bezier(0.22, 1, 0.36, 1) 250ms backwards;
+  }
+
+  .email {
+    animation:
+            footerTextEnter 800ms
+            cubic-bezier(0.22, 1, 0.36, 1) 350ms backwards,
+            footerEmailLight 1400ms ease-out 1100ms backwards;
+  }
+
+  .note {
+    animation: footerTextEnter 800ms
+    cubic-bezier(0.22, 1, 0.36, 1) 450ms backwards;
+  }
+
+  .footer__profiles {
+    animation: footerTextEnter 900ms
+    cubic-bezier(0.22, 1, 0.36, 1) 550ms backwards;
+  }
+
+  .footer__legal {
+    animation: footerTextEnter 900ms
+    cubic-bezier(0.22, 1, 0.36, 1) 650ms backwards;
+  }
+}
+
+/* Весь блок поднимается снизу */
+@keyframes footerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Текст появляется, как в Home */
+@keyframes footerTextEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Почта загорается, затем яркое свечение затухает */
+@keyframes footerEmailLight {
+  0% {
+    color: var(--text-secondary, #b5a7c8);
+    text-shadow: none;
+  }
+
+  55% {
+    color: var(--accent-text, #b026ff);
+    text-shadow:
+            0 0 12px rgba(176, 38, 255, 0.65),
+            0 0 30px rgba(176, 38, 255, 0.35);
+  }
+
+  100% {
+    color: var(--accent-text, #b026ff);
+    text-shadow: none;
+  }
+}
+
+/* Ссылки сразу показываются при фокусе с клавиатуры */
+.pending:focus-within .container {
+  opacity: 1;
+}
+
+.footer:focus-within {
+  .container,
+  .intro,
+  .heading,
+  .email,
+  .note,
+  .footer__profiles,
+  .footer__legal {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pending .container {
+    opacity: 1;
+  }
+
+  .visible {
+    .container,
+    .intro,
+    .heading,
+    .email,
+    .note,
+    .footer__profiles,
+    .footer__legal {
+      animation: none;
+    }
+  }
+}

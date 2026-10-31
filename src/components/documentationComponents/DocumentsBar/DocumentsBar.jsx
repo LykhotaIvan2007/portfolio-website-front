@@ -36,8 +36,9 @@ const DocumentsBar = (props) => {
                         <p>No documents found.</p>
                     )}
 
-                {visibleSubjects.map((subject) => (
+                {visibleSubjects.map((subject, index) => (
                     <Subject
+                        key={index}
                         subject={subject}
                     />
                 ))}

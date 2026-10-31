@@ -63,6 +63,61 @@ $muted: #b5a7c8;
 }
 
 
+.desktopDocuments {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .centralSection {
+    grid-template-columns: minmax(240px, 0.9fr) minmax(0, 2fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .mainDiv {
+    padding: 28px 24px 56px;
+  }
+
+  .documentationSection {
+    padding-top: 36px;
+  }
+
+  .headerText {
+    margin-bottom: 32px;
+
+    h2 {
+      font-size: clamp(30px, 6vw, 44px);
+      line-height: 1.15;
+    }
+  }
+
+  .centralSection {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .desktopDocuments {
+    display: none;
+  }
+
+  .pageContainer > a,
+  .pageContainer > button {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainDiv {
+    padding: 24px 16px 48px;
+  }
+
+  .headerText p {
+    font-size: 12px;
+  }
+}
+
 
 
 

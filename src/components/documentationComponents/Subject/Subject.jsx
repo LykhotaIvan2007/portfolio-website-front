@@ -27,6 +27,7 @@ const Subject = (props) => {
             <div className={styles.documentsDiv}>
                 {subject.docs.map((doc) => (
                     <Document
+                        key={doc.id}
                         doc={doc}
                     />
 
