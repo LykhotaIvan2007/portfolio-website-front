@@ -13,6 +13,7 @@ const technologies = [
     'Docker',
     'Git',
     'Android Studio',
+    'Flask',
 ];
 
 const Technologies = () => {
